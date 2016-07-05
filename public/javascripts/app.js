@@ -1,5 +1,14 @@
+const $board = $('.board')
+const board = new Array(9)
+const game = {
+  turn: true,
+  board
+}
+
 $(() => {
-  const board = $('.board')
-  const game = [0,0,0,0,0,0,0,0,0]
-  fillBoard(board, game)
+  loadGame($board, game)
+  $('.reset').click(function () {
+    game.board = new Array(9)
+    loadGame($board, game)
+  })
 })

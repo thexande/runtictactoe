@@ -31,3 +31,8 @@ a {
 .box:hover {
   cursor: pointer;
 }
+
+.box:active {
+  background: #444;
+  cursor: pointer;
+}
