@@ -12,15 +12,15 @@ describe('TicTacToe', () => {
     it('should have an empty board', () => {
       expect(game.board).to.deep.equal([])
     })
-    it('should have the turn default to 1', () => {
+    xit('should have the turn default to 1', () => {
       expect(game.turn).to.equal(1)
     })
-    it('should have the over status to false and message say in progress', () => {
+    xit('should have the over status to false and message say in progress', () => {
       expect(game.status.over).to.equal(false)
       expect(game.status.message).to.equal("Blank Game")
     })
   })
-  describe('Reset', () => {
+  xdescribe('Reset', () => {
     before( () => {
       game = new TicTacToe()
       game.turn = 2
@@ -34,7 +34,7 @@ describe('TicTacToe', () => {
       expect(game.status.message).to.equal("Blank Game")
     })
   })
-  describe('CreateGame', () => {
+  xdescribe('CreateGame', () => {
     beforeEach( () => {
       game = new TicTacToe()
     })
@@ -69,7 +69,7 @@ describe('TicTacToe', () => {
       expect(game.board).to.deep.equal(board)
     })
   })
-  describe('Move', () => {
+  xdescribe('Move', () => {
     beforeEach(() => {
       game = new TicTacToe()
       let dimensions = {cols: 3, rows: 3}
@@ -88,18 +88,16 @@ describe('TicTacToe', () => {
       expect(game.board).to.deep.equal([[0,0,0],[1,0,0],[0,0,2]])
     })
   })
-  describe('isComplete', () => {
+  xdescribe('isComplete', () => {
     before(() => {
       game = new TicTacToe()
     })
     it('should check if the board is full', () => {
-      game.board = [[1,2], [2,4]]
-      expect(game.isComplete()).to.equal(true)
-      game.board = [[1,0], [2,4]]
-      expect(game.isComplete()).to.equal(false)
+      // add test
     })
   })
-  describe('isWon', () => {
+  // STRETCH
+  xdescribe('isWon', () => {
     // create a method that checks if the game is won
   })
 })
