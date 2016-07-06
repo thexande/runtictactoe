@@ -25,9 +25,6 @@ class TicTacToe {
   move (box) {
     this.board[box[0]][box[1]] = this.turn
     this.turn === 1 ? this.turn = 2 : this.turn = 1
-    this.isOver()
-  }
-  isOver () {
     if (this.isComplete()) {
       this.status.over = true
       this.status.message = "Board is Full"
