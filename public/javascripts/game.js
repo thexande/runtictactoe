@@ -1,44 +1,80 @@
+const socket = io();
+const messages = []
+
+const createGame = event => {
+  event.preventDefault()
+  let rows = $('#rows').val()
+  let cols = $('#cols').val()
+  displayMessage(`New Game: ${rows}x${cols}`)
+  socket.emit('new-game', {cols, rows})
+}
+
 const loadGame = (board, game) => {
   fillBoard(board, game.board)
   setCurrentTurn(game.turn)
-  loadEventListener(board, game)
+  if (game.status.over) {
+    displayMessage(game.status.message)
+  } else {
+    loadEventListener(board, game)
+  }
 }
 
 const fillBoard = (board, game) => {
   board.empty()
-  for (var i = 0; i < game.length; i++) {
-    let value = normalizeValue(game[i])
-    let div = $(`<div data-id="${i}" class="box">${value}</div>`)
-    board.append(div)
-  }
+  game.forEach((row, j) => {
+    let rowDiv = $('<div class="row"></div>')
+    row.forEach((box, i) => {
+      let value = normalizeValue(box)
+      let div = $(`<div data-id='${j}-${i}' class='box'>${value}</div>`)
+      rowDiv.append(div)
+    })
+    board.append(rowDiv)
+  })
+  $('.reset').show()
 }
 
 const normalizeValue = value => {
-  if (value === true) {
-    return "X"
-  } else if (value === false) {
-    return "O"
+  if (value === 1) {
+    return 'X'
+  } else if (value === 2) {
+    return 'O'
   } else {
-    return " "
+    return ' '
   }
 }
 
-const setCurrentTurn = turnBool => {
-  let message = "X's Turn"
-  if (turnBool) {
-    message = "O's Turn"
+const setCurrentTurn = turn => {
+  let message = "Current Turn: O"
+  if (turn === 1) {
+    message = "Current Turn: X"
   }
-  $('.currentTurn').html(message)
+  $('.current-turn').html(message)
 }
 
 const loadEventListener = (board, game) => {
-  $('div').click(function () {
+  $('.box').click(function () {
     let value = $(this).html().trim()
     if (!value) {
-      let boxNumber = $(this).attr("data-id")
-      game.board[boxNumber] = game.turn
-      game.turn = !game.turn
-      loadGame(board, game)
+      let boxNumber = $(this).attr('data-id').split('-')
+      socket.emit('move', boxNumber)
     }
+  })
+}
+
+const resetGame = () => {
+  displayMessage(`Game Reset`)
+  socket.emit('reset', null)
+}
+
+const displayMessage = message => {
+  if (messages.length !== 0) {
+    messages.unshift(message)
+  } else {
+    messages.unshift("Welcome!")
+  }
+  const $messageBoard = $('.message-board')
+  $messageBoard.empty()
+  messages.forEach(message => {
+    $messageBoard.append(`<p>${message}</p>`)
   })
 }

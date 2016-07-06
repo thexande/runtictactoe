@@ -1,14 +1,10 @@
-const $board = $('.board')
-const board = new Array(9)
-const game = {
-  turn: true,
-  board
-}
-
 $(() => {
-  loadGame($board, game)
-  $('.reset').click(function () {
-    game.board = new Array(9)
-    loadGame($board, game)
+  $('form').on('submit', createGame)
+  $('.reset').click(resetGame)
+  socket.on('load', game => {
+    loadGame($('.board'), game)
+  })
+  socket.on('new-connection', message => {
+    displayMessage(message)
   })
 })

@@ -1,25 +1,37 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-around;
+}
+
+h3 {
+  margin-top: 0;
 }
 
 .board {
-  width: 30vw;
-  height: 30vw;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: column;
   color: white;
   font-size: 3em;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
 .box {
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
   border: white .01em solid;
   box-sizing: border-box;
   background: #333;
@@ -35,4 +47,20 @@ a {
 .box:active {
   background: #444;
   cursor: pointer;
+}
+
+.reset {
+  display: none;
+}
+
+.message-board {
+  height: 15vh;
+  min-width: 20vh;
+  overflow-y: scroll;
+  text-align: left;
+  padding: 5px;
+}
+
+.message-board p {
+  margin-top: 0;
 }
