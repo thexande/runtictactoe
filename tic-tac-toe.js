@@ -9,11 +9,12 @@ class TicTacToe {
     this.turn = 1
     this.status = {
       over: false,
-      message: "Game in Progress"
+      message: "Blank Game"
     }
   }
   createGame (dimensions) {
     this.reset()
+    this.status.message = "Game in Progress"
     for (var i = 0; i < dimensions.rows; i++) {
       let row = []
       for (var j = 0; j < dimensions.cols; j++) {
