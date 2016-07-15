@@ -17,8 +17,7 @@ Remember:
 
 In the `socket.js` file, establish a socket connection that meets the following criteria:
 
-1. On `connection`, it emits `new-connection` to all sockets with an information object
-that contains the game as `game` and a welcome message as `welcomeMessage`.
+1. On `connection`, it emits `new-connection` to all sockets with the current game information.
 
 1. When a socket fires a `new-game` event, the connection should receive
 the dimensions from the client, create a new game, then emit `load` to all sockets
