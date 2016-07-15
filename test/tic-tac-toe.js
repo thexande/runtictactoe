@@ -95,6 +95,12 @@ describe('TicTacToe', () => {
     it('should check if the board is full', () => {
       // add test
     })
+    it('should change the over status of the game to true if complete', () => {
+      // add test
+    })
+    it('should change the message status of the game to full if complete', () => {
+      // add test
+    })
   })
   // STRETCH
   xdescribe('isWon', () => {
