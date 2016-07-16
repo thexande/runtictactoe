@@ -166,7 +166,8 @@ describe('TicTacToe', () => {
       game.move([0,1])
       game.move([1,1])
       game.move([0,2])
-      console.log(game.board);
+      // console.log(game.board);
+      expect(game.isWon()).to.equal({ winCase: 'Horizontal Win', winPlayer: 'Player 1' })
       console.log(game.isWon());
     })
     it("should check for a player 2 horizontal win", () => {
@@ -178,7 +179,7 @@ describe('TicTacToe', () => {
       game.move([0,1])
       game.move([2,2])
       game.move([0,2])
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
     })
     // vertical win
@@ -192,8 +193,9 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,1])
       game.move([2,0])
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
+
     })
     it("should check for a player 2 vertical win", () => {
 
@@ -205,7 +207,7 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,0])
       game.move([2,0])
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
     })
     // right diag win
@@ -219,7 +221,7 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,1])
       game.move([2,0])
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
     })
     it("should check for a player 2 right diagonal win", () => {
@@ -232,7 +234,7 @@ describe('TicTacToe', () => {
       game.move([2,0])
       // fill our board, p1 win, bottom row
 
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
     })
     // left diag win
@@ -245,7 +247,7 @@ describe('TicTacToe', () => {
       game.move([1,2])
       game.move([0,2])
       game.move([2,2])
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
     })
     it("should check for a player 2 left diagonal win", () => {
@@ -258,7 +260,7 @@ describe('TicTacToe', () => {
       game.move([0,2])
       // fill our board, p1 win, bottom row
 
-      console.log(game.board);
+      // console.log(game.board);
       console.log(game.isWon());
     })
   })
