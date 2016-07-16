@@ -52,17 +52,17 @@ class TicTacToe {
   }
   isWon() {
     // outcome 1: horizontal win
-     if(this.horizontalWin(this.board, 1)) { return "p1 h win" }
-     if(this.horizontalWin(this.board, 2)) { return "p2 h win" }
+   if(this.horizontalWin(this.board, 1)) { return "p1 h win" }
+   if(this.horizontalWin(this.board, 2)) { return "p2 h win" }
     // outcome 2: vertical win
     if(this.horizontalWin(_.zip.apply(_, this.board), 1)) { return "p1 v win" }
     if(this.horizontalWin(_.zip.apply(_, this.board), 2)) { return "p2 v win" }
-    // // outcome 3: right diagonal
+    // outcome 3: right diagonal
     if(this.diagonalWin(this.board, 1)) { return "p1 right diag win" }
     if(this.diagonalWin(this.board, 2)) { return "p2 right diag win" }
     // outcome 4: left diagonal
-    if(this.diagonalWin(this.board.map((i) => i.reverse()), 1)) { return "p1 left diag win" }
-    if(this.diagonalWin(this.board.map((i) => i.reverse()), 2)) { return "p2 left diag win" }
+    if(this.diagonalWin(this.board.map((i) => i.reverse()), '1')) { return "p1 left diag win" }
+    if(this.diagonalWin(this.board.map((i) => i.reverse()), '2')) { return "p2 left diag win" }
   }
 }
 module.exports = TicTacToe

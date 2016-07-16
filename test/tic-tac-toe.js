@@ -235,5 +235,30 @@ describe('TicTacToe', () => {
       console.log(game.board);
       console.log(game.isWon());
     })
+    // left diag win
+    it("should check for a player 1 left diagonal win", () => {
+
+      // fill our board, p1 win, bottom row
+      game.move([1,1])
+      game.move([1,0])
+      game.move([2,0])
+      game.move([1,2])
+      game.move([0,2])
+      game.move([2,2])
+      console.log(game.board);
+      console.log(game.isWon());
+    })
+    it("should check for a player 2 left diagonal win", () => {
+      game.move([1,0])
+      game.move([1,1])
+      game.move([1,2])
+      game.move([2,0])
+      game.move([2,2])
+      game.move([0,2])
+      // fill our board, p1 win, bottom row
+
+      console.log(game.board);
+      console.log(game.isWon());
+    })
   })
 })
