@@ -1,7 +1,7 @@
 'use strict'
 
 const expect = require('chai').expect
-const TicTacToe = require('../tic-tac-toe')
+const TicTacToe = require('../tic-tac-toe-class')
 let game = new TicTacToe()
 
 describe('TicTacToe', () => {
@@ -12,15 +12,15 @@ describe('TicTacToe', () => {
     it('should have an empty board', () => {
       expect(game.board).to.deep.equal([])
     })
-    xit('should have the turn default to 1', () => {
+    it('should have the turn default to 1', () => {
       expect(game.turn).to.equal(1)
     })
-    xit('should have the over status to false and message say in progress', () => {
+    it('should have the over status to false and message say in progress', () => {
       expect(game.status.over).to.equal(false)
       expect(game.status.message).to.equal("Blank Game")
     })
   })
-  xdescribe('Reset', () => {
+  describe('Reset', () => {
     before( () => {
       game = new TicTacToe()
       game.turn = 2
@@ -34,7 +34,7 @@ describe('TicTacToe', () => {
       expect(game.status.message).to.equal("Blank Game")
     })
   })
-  xdescribe('CreateGame', () => {
+  describe('CreateGame', () => {
     beforeEach( () => {
       game = new TicTacToe()
     })
@@ -69,7 +69,7 @@ describe('TicTacToe', () => {
       expect(game.board).to.deep.equal(board)
     })
   })
-  xdescribe('Move', () => {
+  describe('Move', () => {
     beforeEach(() => {
       game = new TicTacToe()
       let dimensions = {cols: 3, rows: 3}
@@ -88,22 +88,152 @@ describe('TicTacToe', () => {
       expect(game.board).to.deep.equal([[0,0,0],[1,0,0],[0,0,2]])
     })
   })
-  xdescribe('isComplete', () => {
-    before(() => {
+  describe('isComplete', () => {
+    beforeEach(() => {
       game = new TicTacToe()
+      let dimensions = {cols: 3, rows: 3}
+      game.createGame(dimensions)
     })
     it('should check if the board is full', () => {
       // add test
+      // fill our board
+      game.move([0,0])
+      game.move([1,0])
+      game.move([0,1])
+      game.move([1,1])
+      game.move([1,2])
+      game.move([2,2])
+      game.move([2,0])
+      game.move([0,2])
+      game.move([2,1])
+      game.isComplete()
+      expect(game.status.over).to.equal(true)
+    })
+    it('should check if the board is not full', () => {
+      game.move([1,0])
+      game.move([0,1])
+      game.move([1,1])
+      game.move([1,2])
+      game.move([2,2])
+      game.move([2,0])
+      game.move([0,2])
+      game.move([2,1])
+      game.isComplete()
+      expect(game.status.over).to.equal(true)
     })
     it('should change the over status of the game to true if complete', () => {
-      // add test
+      // fill our board
+      game.move([0,0])
+      game.move([1,0])
+      game.move([0,1])
+      game.move([1,1])
+      game.move([1,2])
+      game.move([2,2])
+      game.move([2,0])
+      game.move([0,2])
+      game.move([2,1])
+      game.isComplete()
+      expect(game.status.over).to.equal(true)
     })
     it('should change the message status of the game to full if complete', () => {
-      // add test
+      // fill our board
+      game.move([0,0])
+      game.move([1,0])
+      game.move([0,1])
+      game.move([1,1])
+      game.move([1,2])
+      game.move([2,2])
+      game.move([2,0])
+      game.move([0,2])
+      game.move([2,1])
+      game.isComplete()
+      expect(game.status.message).to.equal("Board Full")
     })
   })
   // STRETCH
-  xdescribe('isWon', () => {
-    // create a method that checks if the game is won
+  describe('isWon', () => {
+    beforeEach(() => {
+      game = new TicTacToe()
+      let dimensions = {cols: 3, rows: 3}
+      game.createGame(dimensions)
+    })
+    // horizontal win
+    it("should check for a player 1 horizontal win", () => {
+
+      // fill our board, p1 win, bottom row
+      game.move([0,0])
+      game.move([1,0])
+      game.move([0,1])
+      game.move([1,1])
+      game.move([0,2])
+      console.log(game.board);
+      console.log(game.isWon());
+    })
+    it("should check for a player 2 horizontal win", () => {
+
+      // fill our board, p1 win, bottom row
+      game.move([1,0])
+      game.move([0,0])
+      game.move([1,1])
+      game.move([0,1])
+      game.move([2,2])
+      game.move([0,2])
+      console.log(game.board);
+      console.log(game.isWon());
+    })
+    // vertical win
+    it("should check for a player 1 vertical win", () => {
+
+      // fill our board, p1 win, bottom row
+      game.move([0,0])
+      game.move([2,2])
+      game.move([1,0])
+      game.move([1,2])
+      game.move([1,1])
+      game.move([2,1])
+      game.move([2,0])
+      console.log(game.board);
+      console.log(game.isWon());
+    })
+    it("should check for a player 2 vertical win", () => {
+
+      // fill our board, p1 win, bottom row
+      game.move([2,2])
+      game.move([0,0])
+      game.move([1,2])
+      game.move([1,0])
+      game.move([1,1])
+      game.move([2,0])
+      game.move([2,0])
+      console.log(game.board);
+      console.log(game.isWon());
+    })
+    // right diag win
+    it("should check for a player 1 right diagonal win", () => {
+
+      // fill our board, p1 win, bottom row
+      game.move([0,0])
+      game.move([1,0])
+      game.move([2,2])
+      game.move([1,2])
+      game.move([1,1])
+      game.move([2,1])
+      game.move([2,0])
+      console.log(game.board);
+      console.log(game.isWon());
+    })
+    it("should check for a player 2 right diagonal win", () => {
+      game.move([1,0])
+      game.move([0,0])
+      game.move([1,2])
+      game.move([2,2])
+      game.move([2,1])
+      game.move([1,1])
+      game.move([2,0])
+      // fill our board, p1 win, bottom row
+
+      console.log(game.board);
+      console.log(game.isWon());
+    })
   })
 })
