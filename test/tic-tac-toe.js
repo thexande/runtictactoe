@@ -249,6 +249,7 @@ describe('TicTacToe', () => {
       console.log(game.isWon());
     })
     it("should check for a player 2 left diagonal win", () => {
+
       game.move([1,0])
       game.move([1,1])
       game.move([1,2])

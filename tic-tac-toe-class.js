@@ -50,19 +50,34 @@ class TicTacToe {
   diagonalWin(board, player){
     return _.countBy(board.map((val,i) => val[i]))[player] === 3
   }
+  constructWinObj(winCase, winPlayer){
+    return {
+      winCase: winCase,
+      winCase: winPlayer
+    }
+  }
+  returnWinObj(winStr) {
+    switch(winStr){
+      case "p1_h_w": return(constructWinObj("Horizontal Win", "Player 1"))
+      case "p2_h_w": return(constructWinObj("Horizontal Win", "Player 2"))
+      case "p1_v_w": return(constructWinObj("Vertical Win", "Player 1"))
+      case "p2_v_w": return(constructWinObj("Vertical Win", "Player 2"))
+      case "p1_r_d_w": return(constructWinObj("Right Diagonal Win", "Player 1"))
+      case "p2_r_d_w": return(constructWinObj("Right Diagonal Win", "Player 2"))
+      case "p1_l_d_w": return(constructWinObj("Left Diagonal Win", "Player 1"))
+      case "p2_l_d_w": return(constructWinObj("Left Diagonal Win", "Player 2"))
+    }
+  }
   isWon() {
-    // outcome 1: horizontal win
-   if(this.horizontalWin(this.board, 1)) { return "p1 h win" }
-   if(this.horizontalWin(this.board, 2)) { return "p2 h win" }
-    // outcome 2: vertical win
-    if(this.horizontalWin(_.zip.apply(_, this.board), 1)) { return "p1 v win" }
-    if(this.horizontalWin(_.zip.apply(_, this.board), 2)) { return "p2 v win" }
-    // outcome 3: right diagonal
-    if(this.diagonalWin(this.board, 1)) { return "p1 right diag win" }
-    if(this.diagonalWin(this.board, 2)) { return "p2 right diag win" }
-    // outcome 4: left diagonal
-    if(this.diagonalWin(this.board.map((i) => i.reverse()), '1')) { return "p1 left diag win" }
-    if(this.diagonalWin(this.board.map((i) => i.reverse()), '2')) { return "p2 left diag win" }
+   if(this.horizontalWin(this.board, 1)) { return "p1_h_win" }
+   if(this.horizontalWin(this.board, 2)) { return "p2_h_win" }
+    if(this.horizontalWin(_.zip.apply(_, this.board), 1)) { return "p1_v_w" }
+    if(this.horizontalWin(_.zip.apply(_, this.board), 2)) { return "p2_v_w" }
+    if(this.diagonalWin(this.board, 1)) { return "p1_r_d_win" }
+    if(this.diagonalWin(this.board, 2)) { return "p2_r_d_win" }
+    var boardReverse = this.board.map((i) => i.reverse())
+    if(this.diagonalWin(boardReverse, '2')) { return "p2_l_d_w" }
+    if(this.diagonalWin(boardReverse, '1')) { return "p1_l_d_w" }
   }
 }
 module.exports = TicTacToe
