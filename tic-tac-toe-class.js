@@ -53,7 +53,7 @@ class TicTacToe {
   constructWinObj(winCase, winPlayer){
     return {
       winCase: winCase,
-      winCase: winPlayer
+      winPlayer: winPlayer
     }
   }
   returnWinObj(winStr) {
@@ -69,7 +69,7 @@ class TicTacToe {
     }
   }
   isWon() {
-   if(this.horizontalWin(this.board, 1)) { return "p1_h_win" }
+   if(this.horizontalWin(this.board, 1)) { return returnWinObj("p1_h_win") }
    if(this.horizontalWin(this.board, 2)) { return "p2_h_win" }
     if(this.horizontalWin(_.zip.apply(_, this.board), 1)) { return "p1_v_w" }
     if(this.horizontalWin(_.zip.apply(_, this.board), 2)) { return "p2_v_w" }
