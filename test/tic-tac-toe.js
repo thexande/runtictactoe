@@ -171,6 +171,7 @@ describe('TicTacToe', () => {
       game.move([0,1])
       game.move([2,2])
       game.move([0,2])
+
       expect(game.isWon()).to.deep.equal({ winCase: 'Horizontal Win', winPlayer: 'Player 2' })
     })
     it("should check for a player 1 vertical win", () => {
@@ -181,6 +182,7 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,1])
       game.move([2,0])
+
       expect(game.isWon()).to.deep.equal({ winCase: 'Vertical Win', winPlayer: 'Player 1' })
     })
     it("should check for a player 2 vertical win", () => {
@@ -191,6 +193,7 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,0])
       game.move([2,0])
+
       expect(game.isWon()).to.deep.equal({ winCase: 'Vertical Win', winPlayer: 'Player 2' })
     })
     it("should check for a player 1 right diagonal win", () => {
@@ -200,6 +203,7 @@ describe('TicTacToe', () => {
       game.move([1,2])
       game.move([1,1])
       game.move([2,1])
+
       game.move([2,0])
       expect(game.isWon()).to.deep.equal({ winCase: 'Right Diagonal Win', winPlayer: 'Player 1' })
     })
@@ -211,6 +215,7 @@ describe('TicTacToe', () => {
       game.move([2,1])
       game.move([1,1])
       game.move([2,0])
+
       expect(game.isWon()).to.deep.equal({ winCase: 'Right Diagonal Win', winPlayer: 'Player 2' })
     })
     it("should check for a player 1 left diagonal win", () => {
