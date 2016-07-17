@@ -1,39 +1,23 @@
 var _ = require('lodash')
 class TicTacToe {
-    constructor() {
-    this.board = []
-    this.turn = 1
-    this.status = {
-      over: false,
-      message: "Blank Game"
-    }
+    constructor() { this.board = []; this.turn = 1;
+    this.status = { over: false, message: "Blank Game" }
   }
-  reset() {
-    this.board = []
-    this.gameComplete = false
-    this.turn = 1
-    this.status = {
-      over: false,
-      message: "Blank Game"
-    }
+  reset() {this.board = []; this.gameComplete = false;  this.turn = 1;
+    this.status = { over: false, message: "Blank Game" }
   }
   createGame(dimensions) {
     this.reset()
-    for (var i2 = 0; i2 < dimensions.rows; i2++) {
-      var rowHolder = []
+    for (var i2 = 0; i2 < dimensions.rows; i2++) { var rowHolder = []
       for (var i = 0; i < dimensions.cols; i++) {
         rowHolder.push(0)
-      }
-      this.board.push(rowHolder)
-    }
-    this.status.message = "Game in Progress"
+      } this.board.push(rowHolder)
+    } this.status.message = "Game in Progress"
   }
   move(m){
     if(!this.board[m[0]][m[1]]){
-      // postion empty.
       this.board[m[0]][m[1]] = this.turn
-    }
-    this.turn == 1 ? this.turn = 2 : this.turn = 1
+    } this.turn == 1 ? this.turn = 2 : this.turn = 1
   }
   isComplete() {
     this.board.forEach((val, key) => {
@@ -64,8 +48,8 @@ class TicTacToe {
     }
   }
   isWon() {
-   if(this.horizontalWin(this.board, 1)) { return this.returnWinObj("p1_h_w") }
-   if(this.horizontalWin(this.board, 2)) { return this.returnWinObj("p2_h_w") }
+    if(this.horizontalWin(this.board, 1)) { return this.returnWinObj("p1_h_w") }
+    if(this.horizontalWin(this.board, 2)) { return this.returnWinObj("p2_h_w") }
     if(this.horizontalWin(_.zip.apply(_, this.board), 1)) { return this.returnWinObj("p1_v_w") }
     if(this.horizontalWin(_.zip.apply(_, this.board), 2)) { return this.returnWinObj("p2_v_w") }
     if(this.diagonalWin(this.board, 1)) { return this.returnWinObj("p1_r_d_w") }

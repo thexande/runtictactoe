@@ -122,7 +122,6 @@ describe('TicTacToe', () => {
       expect(game.status.over).to.equal(true)
     })
     it('should change the over status of the game to true if complete', () => {
-      // fill our board
       game.move([0,0])
       game.move([1,0])
       game.move([0,1])
@@ -136,7 +135,6 @@ describe('TicTacToe', () => {
       expect(game.status.over).to.equal(true)
     })
     it('should change the message status of the game to full if complete', () => {
-      // fill our board
       game.move([0,0])
       game.move([1,0])
       game.move([0,1])
@@ -159,33 +157,23 @@ describe('TicTacToe', () => {
     })
     // horizontal win
     it("should check for a player 1 horizontal win", () => {
-
-      // fill our board, p1 win, bottom row
       game.move([0,0])
       game.move([1,0])
       game.move([0,1])
       game.move([1,1])
       game.move([0,2])
-      // console.log(game.board);
-      expect(game.isWon()).to.equal({ winCase: 'Horizontal Win', winPlayer: 'Player 1' })
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Horizontal Win', winPlayer: 'Player 1' })
     })
     it("should check for a player 2 horizontal win", () => {
-
-      // fill our board, p1 win, bottom row
       game.move([1,0])
       game.move([0,0])
       game.move([1,1])
       game.move([0,1])
       game.move([2,2])
       game.move([0,2])
-      // console.log(game.board);
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Horizontal Win', winPlayer: 'Player 2' })
     })
-    // vertical win
     it("should check for a player 1 vertical win", () => {
-
-      // fill our board, p1 win, bottom row
       game.move([0,0])
       game.move([2,2])
       game.move([1,0])
@@ -193,13 +181,9 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,1])
       game.move([2,0])
-      // console.log(game.board);
-      console.log(game.isWon());
-
+      expect(game.isWon()).to.deep.equal({ winCase: 'Vertical Win', winPlayer: 'Player 1' })
     })
     it("should check for a player 2 vertical win", () => {
-
-      // fill our board, p1 win, bottom row
       game.move([2,2])
       game.move([0,0])
       game.move([1,2])
@@ -207,13 +191,9 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,0])
       game.move([2,0])
-      // console.log(game.board);
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Vertical Win', winPlayer: 'Player 2' })
     })
-    // right diag win
     it("should check for a player 1 right diagonal win", () => {
-
-      // fill our board, p1 win, bottom row
       game.move([0,0])
       game.move([1,0])
       game.move([2,2])
@@ -221,8 +201,7 @@ describe('TicTacToe', () => {
       game.move([1,1])
       game.move([2,1])
       game.move([2,0])
-      // console.log(game.board);
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Right Diagonal Win', winPlayer: 'Player 1' })
     })
     it("should check for a player 2 right diagonal win", () => {
       game.move([1,0])
@@ -232,36 +211,25 @@ describe('TicTacToe', () => {
       game.move([2,1])
       game.move([1,1])
       game.move([2,0])
-      // fill our board, p1 win, bottom row
-
-      // console.log(game.board);
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Right Diagonal Win', winPlayer: 'Player 2' })
     })
-    // left diag win
     it("should check for a player 1 left diagonal win", () => {
-
-      // fill our board, p1 win, bottom row
       game.move([1,1])
       game.move([1,0])
       game.move([2,0])
       game.move([1,2])
       game.move([0,2])
       game.move([2,2])
-      // console.log(game.board);
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Left Diagonal Win', winPlayer: 'Player 1' })
     })
     it("should check for a player 2 left diagonal win", () => {
-
       game.move([1,0])
       game.move([1,1])
       game.move([1,2])
       game.move([2,0])
       game.move([2,2])
       game.move([0,2])
-      // fill our board, p1 win, bottom row
-
-      // console.log(game.board);
-      console.log(game.isWon());
+      expect(game.isWon()).to.deep.equal({ winCase: 'Left Diagonal Win', winPlayer: 'Player 2' })
     })
   })
 })
