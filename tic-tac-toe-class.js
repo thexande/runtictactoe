@@ -55,8 +55,8 @@ class TicTacToe {
     if(this.diagonalWin(this.board, 1)) { return this.returnWinObj("p1_r_d_w") }
     if(this.diagonalWin(this.board, 2)) { return this.returnWinObj("p2_r_d_w") }
     var boardReverse = this.board.map((i) => i.reverse())
-    if(this.diagonalWin(boardReverse, '2')) { return this.returnWinObj("p2_l_d_w") }
-    if(this.diagonalWin(boardReverse, '1')) { return this.returnWinObj("p1_l_d_w") }
+    if(this.diagonalWin(boardReverse, 2)) { return this.returnWinObj("p2_l_d_w") }
+    if(this.diagonalWin(boardReverse, 1)) { return this.returnWinObj("p1_l_d_w") }
   }
 }
 module.exports = TicTacToe
