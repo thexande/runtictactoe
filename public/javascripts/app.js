@@ -1,5 +1,5 @@
 $(() => {
-  $('form').on('submit', createGame)
+  $('#form').on('submit', createGame)
   $('.reset').click(resetGame)
   socket.on('load', game => {
     loadGame($('.board'), game)

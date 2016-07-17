@@ -2,9 +2,16 @@ const socket = io();
 const messages = []
 
 const createGame = event => {
+  console.log($('#form :input'));
+  // get rows and columns from form
+  // var formInput = $('#form :input').val()
+  // console.log(formInput);
+  $('#form').hide()
+  $('.board').show()
+  console.log("creating game");
   event.preventDefault()
-  let rows = $('#rows').val()
-  let cols = $('#cols').val()
+  let rows = 3
+  let cols = 3
   displayMessage(`New Game: ${rows}x${cols}`)
   socket.emit('new-game', {cols, rows})
 }

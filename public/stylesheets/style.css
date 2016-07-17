@@ -1,4 +1,4 @@
-body {
+/*body {
   padding: 50px;
 }
 
@@ -14,10 +14,10 @@ h3 {
 .dashboard {
   display: flex;
   justify-content: space-around;
-}
+}*/
 
 .board {
-  display: flex;
+  display: none;
   justify-content: flex-start;
   flex-direction: column;
   color: white;
@@ -30,6 +30,26 @@ h3 {
 }
 
 .box {
+  width: 13vw;
+  height: 13vw;
+  border: white .01em solid;
+  box-sizing: border-box;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box_5 {
+  width: 8vw;
+  height: 8vw;
+  border: white .01em solid;
+  box-sizing: border-box;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box_10 {
   width: 8vw;
   height: 8vw;
   border: white .01em solid;
@@ -63,4 +83,7 @@ h3 {
 
 .message-board p {
   margin-top: 0;
+}
+#board-container{
+  text-align:center;
 }
