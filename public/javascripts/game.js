@@ -2,16 +2,26 @@ const socket = io();
 const messages = []
 
 const createGame = event => {
-  console.log($('#form :input'));
   // get rows and columns from form
-  // var formInput = $('#form :input').val()
-  // console.log(formInput);
+  var form_data = $('#form').serializeArray().reduce(function(obj, item) {
+      obj[item.name] = item.value;
+      return obj;
+  }, {});
+  switch(form_data.board_dimension){
+    // case "5":{console.log("5");}
+    // case "5":{ $('board').attr('class', 'box_5')}
+    // case "10":{console.log("10");}
+    // case "5":{ $('.board').attr('class', 'box_5')}
+    // case "10":{ $('.board').attr('class', 'box_10')}
+  }
+
+
   $('#form').hide()
   $('.board').show()
   console.log("creating game");
   event.preventDefault()
-  let rows = 3
-  let cols = 3
+  let rows = parseInt(form_data.board_dimension)
+  let cols = parseInt(form_data.board_dimension)
   displayMessage(`New Game: ${rows}x${cols}`)
   socket.emit('new-game', {cols, rows})
 }

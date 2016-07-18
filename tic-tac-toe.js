@@ -49,6 +49,8 @@ class TicTacToe {
   //   })
   //   return this.status.over === true ? true : false
   // }
+
+
   horizontalWin(board, player){
     return board.map((i) => i.join("")).map((r) => {return _.countBy(r)})
      .filter((row) => row[player] == this.dimension).length != 0
@@ -56,6 +58,10 @@ class TicTacToe {
   diagonalWin(board, player){
     return _.countBy(board.map((val,i) => val[i]))[player] == this.dimension
   }
+
+
+
+
   constructWinObj(winCase, winPlayer){ return { winCase: winCase, winPlayer: winPlayer}}
   returnWinObj(winStr) {
     switch(winStr){

@@ -1,7 +1,7 @@
 'use strict'
 
 const expect = require('chai').expect
-const TicTacToe = require('../tic-tac-toe-class')
+const TicTacToe = require('../tic-tac-toe')
 let game = new TicTacToe()
 
 describe('TicTacToe', () => {

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(href="/scripts/bootstrap/dist/css/bootstrap.min.css", rel="stylesheet", crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/cover.css')
+  body
+    block content
+    script(src="/scripts/jquery/dist/jquery.min.js")
+    script(src="/scripts/tether/dist/js/tether.min.js")
+    script(src="/scripts/bootstrap/dist/js/bootstrap.min.js")
+    script(src="/scripts/socket.io-client/socket.io.js")
+    script(src="/javascripts/game.js")
+    script(src="/javascripts/app.js")

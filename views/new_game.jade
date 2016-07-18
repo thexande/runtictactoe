@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  .site-wrapper.center-block
+      .site-wrapper-inner
+        .cover-container
+          .masthead.clearfix
+            .inner
+              a(href="/")
+                h3.masthead-brand TicTacToeSmash
+            
+          .inner.cover
+            form
+              fieldset.form-group
+                label(for='user_handle') Your TicTacToeSmash Handle
+                input#user_handle.form-control(type='email', placeholder='Enter Handle')
+                small.text-muted Be sure to pick something badass. Strike fear into the hearts of your enemies.
+              fieldset.form-group
+                label(for='game_room_title') GameRoom Title
+                input#game_room_title.form-control(type='email', placeholder='Enter email')
+                small.text-muted Your GameRoom should be named someting intimidating, you wouldnt want your enemies thinking you're weak.
+              fieldset.form-group
+              label(for='board_size') Board Dimensions: 
+                .btn-group#board_size(data-toggle='buttons')
+                  label.btn.btn-primary.btn-lg.active
+                    input#option1(type='radio', name='options', autocomplete='off', checked='')
+                    |  3 X 3
+                  label.btn.btn-primary.btn-lg
+                    input#option2(type='radio', name='options', autocomplete='off')
+                    |  5 X 5
+                  label.btn.btn-primary.btn-lg
+                    input#option3(type='radio', name='options', autocomplete='off')
+                    |  10 X 10 
+              fieldset.form-group
+                br
+                a.btn.btn-lg.btn-success(type="submit") Create Game
+
+          .mastfoot
+            .inner
+              p
+                | Built by  
+                a(href='http://getbootstrap.com') @thexande
+                | , extending code seed from 
+                a(href='https://twitter.com/mdo') @berto
+                | .
