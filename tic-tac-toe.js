@@ -67,7 +67,7 @@ class TicTacToe {
     switch(winStr){
       // case "p1_h_w": return(this.constructWinObj("Horizontal Win", "Player 1"))
       case "p1_h_w": {
-        this.status.message = JSON.stringify(this.constructWinObj("Horizontal Win", "Player 1"))
+        this.status.message = (this.constructWinObj("Horizontal Win", "Player 1"))
         this.status.winObj = this.constructWinObj("Horizontal Win", "Player 1")
         this.status.over = true
       }

@@ -7,17 +7,9 @@ const createGame = event => {
       obj[item.name] = item.value;
       return obj;
   }, {});
-  switch(form_data.board_dimension){
-    // case "5":{console.log("5");}
-    // case "5":{ $('board').attr('class', 'box_5')}
-    // case "10":{console.log("10");}
-    // case "5":{ $('.board').attr('class', 'box_5')}
-    // case "10":{ $('.board').attr('class', 'box_10')}
-  }
-
-
   $('#form').hide()
   $('.board').show()
+  $(".msg_btns").show()
   console.log("creating game");
   event.preventDefault()
   let rows = parseInt(form_data.board_dimension)
@@ -80,6 +72,7 @@ const loadEventListener = (board, game) => {
 
 const resetGame = () => {
   displayMessage(`Game Reset`)
+  $('.message-board').html("")
   socket.emit('reset', null)
 }
 
@@ -92,6 +85,15 @@ const displayMessage = message => {
   const $messageBoard = $('.message-board')
   $messageBoard.empty()
   messages.forEach(message => {
-    $messageBoard.append(`<p>${message}</p>`)
+    $messageBoard.append(`<div class="alert alert-info">${message}</div>`)
+    // handle win
+    if(typeof(message) == 'object'){
+      win = (message)
+      console.log(win);
+      $(".modal-title").html(win.winCase)
+      $(".modal-body").html(win.winPlayer)
+      $('#myModal').modal('show')
+    }
+    console.log(typeof(message));
   })
 }

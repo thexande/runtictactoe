@@ -7,20 +7,23 @@ block content
           .masthead.clearfix
             .inner
               a(href="/")
-                h3.masthead-brand TicTacToeSmash
+                h3.masthead-brand TicTacToe
             
           .inner.cover
             form#form
               fieldset.form-group
-                label(for='user_handle') Your TicTacToeSmash Handle
+                label(for='user_handle') 
+                  h2 Your TicTacToe Handle
                 input#user_handle.form-control(type='text', placeholder='Enter Handle' name="user_handle")
                 small.text-muted Be sure to pick something badass. Strike fear into the hearts of your enemies.
               fieldset.form-group
-                label(for='game_room_title') GameRoom Title
+                label(for='game_room_title') 
+                  h2 GameRoom Title
                 input#game_room_title.form-control(type='text', name="user_room_title" placeholder='Enter the name for your new Tic Tac Toe room.')
                 small.text-muted Your GameRoom should be named someting intimidating, you wouldnt want your enemies thinking you're weak.
               fieldset.form-group
-              label(for='board_size') Board Dimensions: 
+              label(for='board_size') 
+                h2 Board Dimensions: 
                 .btn-group#board_size(data-toggle='buttons')
                   label.btn.btn-primary.btn-lg.active
                     input#board_option3(type='radio', name='board_dimension', value="3", autocomplete='off', checked='')
@@ -36,11 +39,19 @@ block content
                 button.btn.btn-lg.btn-success(type="submit") Create Game
             #board-container
               .board.hide#board
+            br
+            .msg_btns.hide
+              .btn.btn-danger.reset_button.btn-large#reset Reset
+              br
+              br
+              h3.current-turn
+              br
+              .message-board.empty
           .mastfoot
             .inner
               p
                 | Built by  
-                a(href='http://getbootstrap.com') @thexande
+                a(href='http://github.com/thexande') @thexande
                 | , extending code seed from 
-                a(href='https://twitter.com/mdo') @berto
+                a(href='https://github.com/thexande') @berto
                 | .

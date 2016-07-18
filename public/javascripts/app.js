@@ -1,6 +1,6 @@
 $(() => {
   $('#form').on('submit', createGame)
-  $('.reset').click(resetGame)
+  $('.reset_button').click(resetGame)
   socket.on('load', game => {
     loadGame($('#board'), game)
   })
