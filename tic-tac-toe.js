@@ -60,36 +60,61 @@ class TicTacToe {
   }
 
 
-
-
   constructWinObj(winCase, winPlayer){ return { winCase: winCase, winPlayer: winPlayer}}
   returnWinObj(winStr) {
     switch(winStr){
-      // case "p1_h_w": return(this.constructWinObj("Horizontal Win", "Player 1"))
       case "p1_h_w": {
-        this.status.message = (this.constructWinObj("Horizontal Win", "Player 1"))
-        this.status.winObj = this.constructWinObj("Horizontal Win", "Player 1")
         this.status.over = true
-      }
-      case "p2_h_w": return(this.constructWinObj("Horizontal Win", "Player 2"))
-      case "p1_v_w": return(this.constructWinObj("Vertical Win", "Player 1"))
-      case "p2_v_w": return(this.constructWinObj("Vertical Win", "Player 2"))
-      case "p1_r_d_w": return(this.constructWinObj("Right Diagonal Win", "Player 1"))
-      case "p2_r_d_w": return(this.constructWinObj("Right Diagonal Win", "Player 2"))
-      case "p1_l_d_w": return(this.constructWinObj("Left Diagonal Win", "Player 1"))
-      case "p2_l_d_w": return(this.constructWinObj("Left Diagonal Win", "Player 2"))
+        this.status.message = (this.constructWinObj("Horizontal Win", "Player 1"))}
+      case "p2_h_w": {
+        this.status.over = true
+        this.status.message = (this.constructWinObj("Horizontal Win", "Player 2"))}
+      case "p1_v_w": {
+        this.status.over = true
+        this.status.message = (this.constructWinObj("Vertical Win", "Player 1"))}
+      case "p2_v_w": {
+        this.status.over = true
+        this.status.message = (this.constructWinObj("Vertical Win", "Player 2"))}
+      // case "p1_r_d_w": {
+      //   this.status.over = true
+      //   this.status.message = (this.constructWinObj("Right Diagonal Win", "Player 1"))}
+      // case "p2_r_d_w": {
+      //   this.status.over = true
+      //   this.status.message = (this.constructWinObj("Right Diagonal Win", "Player 2"))}
+      // case "p1_l_d_w": {
+      //   this.status.over = true
+      //   this.status.message = (this.constructWinObj("Left Diagonal Win", "Player 1"))}
+      // case "p2_l_d_w": {
+      //   this.status.over = true
+      //   this.status.message = (this.constructWinObj("Left Diagonal Win", "Player 2"))}
     }
   }
   isWon() {
-    if(this.horizontalWin(this.board, 1)) {  this.returnWinObj("p1_h_w") }
-    if(this.horizontalWin(this.board, 2)) {  this.returnWinObj("p2_h_w") }
-    // if(this.horizontalWin(_.zip.apply(_, this.board), 1)) { return this.returnWinObj("p1_v_w") }
-    // if(this.horizontalWin(_.zip.apply(_, this.board), 2)) { return this.returnWinObj("p2_v_w") }
-    // if(this.diagonalWin(this.board, 1)) { return this.returnWinObj("p1_r_d_w") }
-    // if(this.diagonalWin(this.board, 2)) { return this.returnWinObj("p2_r_d_w") }
-    // // var boardReverse = this.board.map((i) => i.reverse())
-    // if(this.diagonalWin(boardReverse, 2)) { return this.returnWinObj("p2_l_d_w") }
-    // if(this.diagonalWin(boardReverse, 1)) { return this.returnWinObj("p1_l_d_w") }
+    if(this.horizontalWin(this.board, 1)) {
+      this.returnWinObj("p1_h_w")
+    }
+    if(this.horizontalWin(this.board, 2)) {
+      this.returnWinObj("p2_h_w")
+    }
+    if(this.horizontalWin(_.zip.apply(_, this.board), 1)) {
+      this.returnWinObj("p1_v_w")
+    }
+    if(this.horizontalWin(_.zip.apply(_, this.board), 2)) {
+      this.returnWinObj("p2_v_w")
+    }
+    if(this.diagonalWin(this.board, 1)) {
+      this.returnWinObj("p1_r_d_w")
+    }
+    if(this.diagonalWin(this.board, 2)) {
+      this.returnWinObj("p2_r_d_w")
+    }
+    // var boardReverse = this.board.map((i) => i.reverse())
+    // if(this.diagonalWin(boardReverse, 2)) {
+    //   this.returnWinObj("p2_l_d_w")
+    // }
+    // if(this.diagonalWin(boardReverse, 1)) {
+    //   this.returnWinObj("p1_l_d_w")
+    // }
   }
 }
 module.exports = TicTacToe
